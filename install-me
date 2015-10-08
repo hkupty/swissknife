@@ -1,0 +1,29 @@
+#!/bin/env bash
+# install-me: Installs the swissknife tools
+
+install-me() {
+    TGT_INSTALL=${TGT_INSTALL:-$HOME/.swissknife/}
+    TGT_PROJECT_DIR=${TGT_PROJECT_DIR:-$HOME/projects/}
+
+    if [ ! -d "$TGT_INSTALL" ]; then
+        mkdir -p $TGT_INSTALL
+    fi
+
+    cd $TGT_INSTALL
+    git clone git@github.com:hkupty/swissknife.git .
+
+    cat > base <<- EOS
+#!/bin/bash
+SWISSKNIFE_HOME=$TGT_INSTALL
+PROJ_DIR=\${PROJ_DIR:-$TGT_PROJECT_DIR}
+PROJ_FILE=\$PROJ_DIR/.projcd
+
+VENV_DIR=.venv
+VENV_STR=\$VENV_DIR/bin/activate
+VENV_VERSION=2.7
+EOS
+    echo "#!/bin/bash" > $TGT_INSTALL/tools
+}
+
+install-me
+
