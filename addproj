@@ -14,3 +14,9 @@ i\name_alias[$ALIAS]="$PROJECT"
 EOC
     sed -i $SEDSTR $PROJ_FILE
 }
+
+delproj() {
+    ALIAS=$1
+    SEDSTR="/\[$ALIAS\]/d"
+    sed -i $SEDSTR $PROJ_FILE
+}
