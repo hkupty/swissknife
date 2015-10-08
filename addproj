@@ -1,0 +1,16 @@
+#!/bin/bash
+# addproj - Add a project to .projcs with the help of sed
+IAMAT=$(dirname $0)
+source $IAMAT/base
+
+addproj() {
+    ALIAS=$1
+    PROJECT=$2
+    read -r -d '' SEDSTR << EOC
+/^declare/{
+n
+i\name_alias[$ALIAS]="$PROJECT"
+}
+EOC
+    sed -i $SEDSTR $PROJ_FILE
+}

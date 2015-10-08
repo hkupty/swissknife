@@ -1,0 +1,44 @@
+#!/bin/bash
+IAMAT=$(dirname $0)
+source $IAMAT/base
+
+at () {
+    # Find matching target
+    if [ -z "$1" ]
+    then
+        if [ ! -z "$VIRTUAL_ENV" ]; then
+            deactivate
+        fi
+        pushd $PROJ_DIR > /dev/null
+        return 0
+    fi
+
+    if [ ! -d "$PROJ_DIR/$1" ]
+    then
+        if [ -e "$PROJ_FILE" ]; then
+            source $PROJ_FILE
+        else
+            echo "Unable to find '.projcd' alias file" >> /dev/stderr
+            return -1
+        fi
+        [ ${name_alias[$1]+1} ] && TGT=${name_alias[$1]} || (echo "Alias not found" >> /dev/stderr && return -1)
+    else
+        TGT=$1
+    fi
+
+    # Check if target exists
+    if [ ! -e "$PROJ_DIR/$TGT" ]; then; echo "Target directory not found" >> /dev/stderr && return -1; fi
+
+    # Leave current virtualenv, if any
+    if [ ! -z "$VIRTUAL_ENV" ]; then
+        deactivate
+    fi
+
+    # Force directory change
+    pushd $PROJ_DIR/$TGT > /dev/null
+
+    # If file exists (thus a python project)
+    if [ ! -z "$VENV_STR" ]; then
+        source $VENV_STR
+    fi
+}

@@ -1,0 +1,16 @@
+#!/bin/bash
+IAMAT=$(dirname $0)
+source $IAMAT/base
+
+redo-venv () {
+    # Leave current virtualenv, if any
+    if [ ! -z "$VIRTUAL_ENV" ]; then
+        deactivate
+        WAS_SOURCED=1
+    fi
+    yes | rm -rf $VENV_DIR
+    virtualenv-$VENV_VERSION $VENV_DIR
+    if [ ! -z "$WAS_SOURCED" ]; then
+        source $VENV_STR
+    fi
+}
