@@ -59,8 +59,8 @@ curl -L https://raw.githubusercontent.com/hkupty/swissknife/master/install-me | 
 Next, toggle the features you'd like with
 ```bash
 cd ~/.swissknife  # or the folder you installed swissknife
-feature-switch turn-on addproj
-feature-switch turn-on at
+./feature-switch turn-on addproj
+./feature-switch turn-on at
 ```
 
 ### Load scrips
