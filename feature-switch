@@ -13,6 +13,11 @@ turn-off() {
     sed -i $SEDSTR tools
 }
 
+show() {
+    echo "Installed tools"
+    awk -F '/' 'NR>1 { print "  "$NF }' tools
+}
+
 ACTION=$1
 shift
 $ACTION $@
