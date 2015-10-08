@@ -31,8 +31,6 @@ addproj awesome my-awesome-system-1
 addproj great my-other-great-project
 ```
 
-I'll continue to upload helpful scripts here
-
 ## Installation
 
 ### Installing swissknife
