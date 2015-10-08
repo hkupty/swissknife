@@ -37,7 +37,7 @@ addproj great my-other-great-project
 In order to install `swissknife`, all you have to do is run the following command:
 
 ```
-curl -L https://raw.githubusercontent.com/hkupty/swissknife/master/test-me | bash
+curl -L https://raw.githubusercontent.com/hkupty/swissknife/master/install-me | bash
 ```
 
 By default, it installs using the following configs
@@ -52,7 +52,7 @@ TGT_PROJECT_DIR=$HOME/projects/
 If you want to change the default values, export the variable before calling curl:
 ```
 export TGT_PROJECT_DIR=$HOME/my-projects/this-folder/
-curl -L https://raw.githubusercontent.com/hkupty/swissknife/master/test-me | bash
+curl -L https://raw.githubusercontent.com/hkupty/swissknife/master/install-me | bash
 ```
 
 ### Toggling features
