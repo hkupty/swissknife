@@ -1,0 +1,13 @@
+#!/bin/env bash
+# install-me: Installs the swissknife tools
+
+install-me() {
+    TGT_INSTALL=${TGT_INSTALL:-$HOME/.swissknife/}
+    TGT_PROJECT_DIR=${TGT_PROJECT_DIR:-$HOME/projects/}
+
+    echo $TGT_INSTALL
+    echo $TGT_PROJECT_DIR
+}
+
+install-me
+
