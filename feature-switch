@@ -1,0 +1,18 @@
+#!/bin/bash
+# feature-switch - Turn features on/off
+IAMAT=$(dirname $0)
+source base
+
+turn-on() {
+    SEDSTR="/#\!/a source $SWISSKNIFE_HOME\/$1"
+    sed -i "$SEDSTR" tools
+}
+
+turn-off() {
+    SEDSTR="/\\/$1$/d"
+    sed -i $SEDSTR tools
+}
+
+ACTION=$1
+shift
+$ACTION $@
