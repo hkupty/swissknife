@@ -2,7 +2,7 @@
 IAMAT=$(dirname $0)
 source $IAMAT/base
 
-at () {
+sd () {
     # Find matching target
     if [ -z "$1" ]
     then

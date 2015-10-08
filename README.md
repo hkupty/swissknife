@@ -22,10 +22,10 @@ source .venv/bin/activate
 
 I can simply:
 ```shell
-at awesome
+sd awesome
 # Start coding
 
-at great
+sd great
 # Coding again..
 ```
 
@@ -64,7 +64,7 @@ Next, toggle the features you'd like with
 ```bash
 cd ~/.swissknife  # or the folder you installed swissknife
 ./feature-switch turn-on addproj
-./feature-switch turn-on at
+./feature-switch turn-on sd
 ```
 
 ### Load scrips
