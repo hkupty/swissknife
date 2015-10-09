@@ -35,6 +35,65 @@ addproj awesome my-awesome-system-1
 addproj great my-other-great-project
 ```
 
+## Modules
+
+Definition of the implemented modules follow below.
+
+### `sd` - Switch Directory
+`sd` is a helper script that helps you reach for your project from wherever you are.
+You can either give the project an alias or call it for its folder name, whichever option you pleas.
+
+For example, in a directory structure as follows:
+```
+project/
+    awesome-project-1/
+    huge-project/
+        frontend/
+        backend/
+```
+
+You can use `sd` withou setting up aliases like this:
+```
+sd awesome-project-1
+sd huge-project
+sd huge-project/frontend
+sd huge-project/backend
+```
+
+Thou this is interesting, `sd` can make use of aliases to make things better:
+```
+# Aliasing a project
+addproj awesome awesome-project-1
+sd awesome
+
+# Aliasing a nested folder
+addproj hugefront huge-project/frontend
+sd hugefront
+
+# Multiple aliases for the same folder work as well
+addproj backend huge-project/backend
+addproj back huge-project/backend
+sd backend
+sd back
+```
+#### TODO
+- [ ] Separate `virtualenv` handling from `sd` to allow other kinds of projects (i.e. javascript/nodejs)
+
+### `addproj` - Project aliases
+For handling the aliases projects, a `.projcd` file is created at your project root,
+which was defined with the variable `TGT_PROJECT_DIR`, when you installed (see Installation).
+
+This module implements two functions for helping you manipulate the aliases:
+`addproj` and `delproj`(quite like `alias` and `unalias`), which allow you to make nested project folders easy to react,
+for example:
+```
+addproj new-site incredible-product/frontend/refactoring/version-2/
+sd new-site
+```
+
+#### TODO
+- [ ] Add project alias listing to `addproj` module.
+
 ## Installation
 
 ### Installing swissknife
