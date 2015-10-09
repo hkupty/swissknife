@@ -41,7 +41,7 @@ sd () {
     pushd $PROJ_DIR/$TGT > /dev/null
 
     # If file exists (thus a python project)
-    if [ ! -z "$VENV_STR" ]; then
+    if [ -e "$VENV_STR" ]; then
         source $VENV_STR
     fi
 }
