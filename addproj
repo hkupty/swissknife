@@ -20,3 +20,18 @@ delproj() {
     SEDSTR="/\[$ALIAS\]/d"
     sed -i $SEDSTR $PROJ_FILE
 }
+
+proj-ls () {
+    read -r -d '' SEDSTR << EOC
+    1,2 d
+/^declare/{
+    c\alias\tproject
+}
+/^name_alias/{
+s/name_alias//
+s/"//g
+s/=/\t/
+}
+EOC
+    sed $SEDSTR $PROJ_FILE | awk '{ printf "%-20s %s\n", $1, $2 }'
+}

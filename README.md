@@ -91,8 +91,13 @@ addproj new-site incredible-product/frontend/refactoring/version-2/
 sd new-site
 ```
 
-#### TODO
-- [ ] Add project alias listing to `addproj` module.
+Also, `proj-ls` will output all your aliases:
+```
+alias                project
+[back]               huge-project/backend
+[new-site]           incredible-product/frontend/refactoring/version-2/
+...
+```
 
 ## Installation
 
