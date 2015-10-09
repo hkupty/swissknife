@@ -27,6 +27,7 @@ EOS-I
 #!/bin/bash
 
 declare -A name_alias
+
 EOS-II
 
     echo "#!/bin/bash" > $TGT_INSTALL/tools
