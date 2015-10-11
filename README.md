@@ -7,7 +7,7 @@ This is a small set of minor scripts that I use to speed up my daily tasks throu
 Please, share some scripts and useful tools you have here. This is a very simple and powerful productivity enhancer and every single piece of help might save people tons of hours, spent with repetitive tasks.
 
 ## Usage
-For exemple, instead of doing:
+For example, instead of doing:
 
 ```shell
 cd ~/projects/my-awesome-system-1/
