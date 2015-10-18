@@ -8,18 +8,18 @@ source $IAMAT/addproj
 mkproj() {
     PROJ_NAME=$1
 
-    if [ -z "$2" ]; then
+    if [ ! -z "$2" ]; then
         PROJ_ALIAS=$2
     fi
 
     sd
     mkdir $PROJ_NAME
     
-    if [ -z "$PROJ_ALIAS" ]; then
-        addproj $PROJ_NAME $PROJ_ALIAS
+    if [ ! -z "$PROJ_ALIAS" ]; then
+        addproj $PROJ_ALIAS $PROJ_NAME
     fi
 
     sd $PROJ_NAME
-
+    git init .
 }
 
