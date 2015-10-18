@@ -98,6 +98,21 @@ alias                project
 [new-site]           incredible-product/frontend/refactoring/version-2/
 ...
 ```
+### `new-proj` - Project creation
+Simply create a new project at `TGT_PROJECT_DIR` by typing:
+```
+mkproj FOLDER_NAME [ALIAS]
+```
+It will create a folder, take you there and create a git repo on the folder.
+
+### `bootstrap` - Language setting up
+Set up dependencies and structure for your project according to the desired project language.
+```
+bootstrap LANGUAGE_NAME
+```
+Currently available languages are:
+* Python (virtualenv-2.7/pip)
+* Erlang (erlang.mk)
 
 ## Installation
 
