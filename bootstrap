@@ -1,0 +1,38 @@
+#!/bin/env bash
+IAMAT=$(dirname $0)
+source $IAMAT/base
+
+bootstrap() {
+    LANG=$1
+
+    if [ ! -e $IAMAT/proj-langs/$LANG ]; then
+        echo "No language bindings for $LANG" >> /dev/stderr
+    fi
+
+    source $IAMAT/proj-langs/$LANG
+
+    _pre_bootstrap
+
+    if [ $? -ne 0 ]; then;
+        echo "Precondition failed aborting" >> /dev/stderr
+        return -1
+    fi
+
+    echo "Installing $BUILD_TOOL"
+
+    _bootstrap
+
+    if [ $? -ne 0 ]; then;
+        echo "Could not finish" >> /dev/stderr
+        return -1
+    fi
+
+    _post_bootstrap
+
+    if [ $? -ne 0 ]; then;
+        echo "Error finishing." >> /dev/stderr
+        return -1
+    fi
+
+    echo "Success!"
+}

@@ -1,0 +1,15 @@
+#!/bin/env bash
+BUILD_TOOL="erlang.mk"
+
+_pre_bootstrap() { return 0 }
+
+_bootstrap() {
+    curl -sO https://raw.githubusercontent.com/ninenines/erlang.mk/master/erlang.mk >> /dev/null
+}
+
+_post_bootstrap() { 
+    unset BUILD_TOOL
+    return 0 
+}
+
+

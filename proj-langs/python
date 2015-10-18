@@ -1,0 +1,50 @@
+#!/bin/env bash
+VENV_DIR=.venv
+VENV_STR=$VENV_DIR/bin/activate
+PYTHON_VERSION=2.7
+VENV_CMD=virtualenv-$PYTHON_VERSION
+DEPS=requirements.txt
+
+BUILD_TOOL=pip
+
+_pre_bootstrap() {
+    if [ ! -z "$VIRTUAL_ENV" ]; then
+        deactivate
+        WAS_SOURCED=1
+        yes | rm -rf $VENV_DIR
+    fi
+}
+
+_build_tool_install_deps() {
+    $BUILD_TOOL install --upgrade -r $DEPS
+}
+
+
+_bootstrap() {
+    $VENV_CMD $VENV_DIR
+
+    if [ -e $DEPS ] ; then
+        source $VENV_STR
+        _build_tool_install_deps
+
+        if [ -z "$WAS_SOURCED" ]; then
+            deactivate
+        fi
+    fi
+}
+
+_post_bootstrap() {
+    if [ ! -z "$WAS_SOURCED" ]; then
+        source $VENV_STR
+    fi
+
+    unset DEPS
+    unset BUILD_TOOL
+    unset VENV_DIR
+    unset VENV_STR
+    unset WAS_SOURCED
+    unset PYTHON_VERSION
+
+    return 0 
+}
+
