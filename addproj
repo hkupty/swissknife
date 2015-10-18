@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 # addproj - Add a project to .projcs with the help of sed
 IAMAT=$(dirname $0)
 source $IAMAT/base

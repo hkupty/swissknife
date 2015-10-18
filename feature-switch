@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 # feature-switch - Turn features on/off
 IAMAT=$(dirname $0)
 source base

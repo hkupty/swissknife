@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 IAMAT=$(dirname $0)
 source $IAMAT/base
 source $IAMAT/sd
