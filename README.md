@@ -146,10 +146,34 @@ It will create a folder, take you there and create a git repo on the folder.
 
 ### `bootstrap` - Language setting up
 Set up dependencies and structure for your project according to the desired project language.
+The intention of this `bootstrap` command is to serve as a frontend for specific language tools with
+defaults.
 ```
 bootstrap LANGUAGE_NAME
 ```
+In python, for example, all that is done is the creation of virtualenv and installation of
+python dependencies/requirements if a 'requirements.txt' file is found on the current folder.
+Other projects might have more complex setting up.
+
+#### TODO
+- [ ] Set up more languages:
+ - [ ] Javascript (via yeoman)
+ - [ ] Javascript (simple node project)
+ - [ ] Scala (via g8)
+ - [ ] Scala (simple maven structure)
+ - [ ] Java (simple maven structure)
+ - [ ] Python (3.x)
+ - [ ] Python (optional; yeoman-like scaffolding)
+- [ ] Create default behaviors for simpler implementation (i.e. deps checking on `_pre_bootstrap`)
+- [ ] Allow parameters to be passed and/or variables to be overriden
+
 Currently available languages are:
 * Python (virtualenv-2.7/pip)
 * Erlang (erlang.mk)
 
+### General TODOs
+Some desired goals of this project:
+- [ ] Integrate languages with project behaviors (i.e. check for dependency updates once `sd`'ing into a project);
+  - [ ] Specially for some languages, such as javascript, start watchers (such as gulp tasks) as `sd`'ing into the project;
+  - [ ] Eventually, to support those goals, integrate a bit deeper into the OS by sending desktop notifications for background tasks started this way.
+- [ ] Separate repository management from scripts, to allow other backends (such as `hg` or `svn`);
