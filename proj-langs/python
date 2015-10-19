@@ -3,16 +3,19 @@ VENV_DIR=.venv
 VENV_STR=$VENV_DIR/bin/activate
 PYTHON_VERSION=2.7
 VENV_CMD=virtualenv-$PYTHON_VERSION
+DEPENDS=(python-$PYTHON_VERSION $VENV_CMD)
 DEPS=requirements.txt
 
 BUILD_TOOL=pip
 
 _pre_bootstrap() {
-    if [ ! -z "$VIRTUAL_ENV" ]; then
-        deactivate
-        WAS_SOURCED=1
-        yes | rm -rf $VENV_DIR
-    fi
+    for DEP in $DEPENDS; do
+        which $DEP >> /dev/null
+        if [ $? -ne 0]; then
+            echo "Please install '$DEP' in order to proceed" >> /dev/stderr
+            return -1
+        fi
+    done
 }
 
 _build_tool_install_deps() {
@@ -21,6 +24,12 @@ _build_tool_install_deps() {
 
 
 _bootstrap() {
+    if [ ! -z "$VIRTUAL_ENV" ]; then
+        deactivate
+        WAS_SOURCED=1
+        yes | rm -rf $VENV_DIR
+    fi
+
     $VENV_CMD $VENV_DIR
 
     if [ -e $DEPS ] ; then
@@ -31,12 +40,13 @@ _bootstrap() {
             deactivate
         fi
     fi
-}
 
-_post_bootstrap() {
     if [ ! -z "$WAS_SOURCED" ]; then
         source $VENV_STR
     fi
+}
+
+_post_bootstrap() {
 
     unset DEPS
     unset BUILD_TOOL

@@ -1,15 +1,25 @@
 #!/bin/env bash
+DEPENDS=(curl)
 BUILD_TOOL="erlang.mk"
 
-_pre_bootstrap() { return 0 }
+_pre_bootstrap() {
+    for DEP in $DEPENDS; do
+        which $DEP >> /dev/null
+        if [ $? -ne 0]; then
+            echo "Please install '$DEP' in order to proceed" >> /dev/stderr
+            return -1
+        fi
+    done
+    return 0
+}
 
 _bootstrap() {
     curl -sO https://raw.githubusercontent.com/ninenines/erlang.mk/master/erlang.mk >> /dev/null
 }
 
-_post_bootstrap() { 
+_post_bootstrap() {
     unset BUILD_TOOL
-    return 0 
+    return 0
 }
 
 
