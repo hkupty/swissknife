@@ -1,23 +1,23 @@
 #!/bin/env bash
 # feature-switch - Turn features on/off
 IAMAT=$(dirname $0)
-source base
+source $IAMAT/base
 
-turn-on() {
-    SEDSTR="/#\!/a source $SWISSKNIFE_HOME\/$1"
-    sed -i "$SEDSTR" tools
+skf-turn-on() {
+  SEDSTR="/#\!/a source $SWISSKNIFE_HOME\/$1"
+  sed -i "$SEDSTR" $IAMAT/tools
 }
 
-turn-off() {
-    SEDSTR="/\\/$1$/d"
-    sed -i $SEDSTR tools
+skf-turn-off() {
+  SEDSTR="/\\/$1$/d"
+  sed -i $SEDSTR $IAMAT/tools
 }
 
-show() {
-    echo "Installed tools"
-    awk -F '/' 'NR>1 { print "  "$NF }' tools
+skf-show() {
+  echo "Installed tools"
+  awk -F '/' 'NR>1 { print "  "$NF }' $IAMAT/tools
 }
 
-ACTION=$1
-shift
-$ACTION $@
+skf-add-hook(){
+  
+}

@@ -14,7 +14,7 @@ mkproj() {
 
     sd
     mkdir $PROJ_NAME
-    
+
     if [ ! -z "$PROJ_ALIAS" ]; then
         addproj $PROJ_ALIAS $PROJ_NAME
     fi

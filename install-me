@@ -17,10 +17,6 @@ install-me() {
 SWISSKNIFE_HOME=$TGT_INSTALL
 PROJ_DIR=\${PROJ_DIR:-$TGT_PROJECT_DIR}
 PROJ_FILE=\$PROJ_DIR/.projcd
-
-VENV_DIR=.venv
-VENV_STR=\$VENV_DIR/bin/activate
-VENV_VERSION=2.7
 EOS-I
 
     cat > $TGT_PROJECT_DIR/.projcd  <<- EOS-II
@@ -34,4 +30,3 @@ EOS-II
 }
 
 install-me
-

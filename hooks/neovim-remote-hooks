@@ -1,0 +1,5 @@
+#!/bin/env bash
+
+_post_sd_neovim_hook() {
+  nvr -c "tcd `pwd`"
+}
