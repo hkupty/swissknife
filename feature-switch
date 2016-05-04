@@ -1,16 +1,17 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 # feature-switch - Turn features on/off
 IAMAT=$(dirname $0)
 source $IAMAT/base
+source $IAMAT/crossplat
 
 skf-turn-on() {
   SEDSTR="/#\!/a source $SWISSKNIFE_HOME\/$1"
-  sed -i "$SEDSTR" $IAMAT/tools
+  sed_f -i "$SEDSTR" $IAMAT/tools
 }
 
 skf-turn-off() {
   SEDSTR="/\\/$1$/d"
-  sed -i $SEDSTR $IAMAT/tools
+  sed_f -i $SEDSTR $IAMAT/tools
 }
 
 skf-show() {

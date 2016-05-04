@@ -2,6 +2,7 @@
 # addproj - Add a project to .projcs with the help of sed
 IAMAT=$(dirname $0)
 source $IAMAT/base
+source $IAMAT/crossplat
 
 addproj() {
     ALIAS=$1
@@ -12,13 +13,13 @@ n
 i\name_alias[$ALIAS]="$PROJECT"
 }
 EOC
-    sed -i $SEDSTR $PROJ_FILE
+    sed_f -i "$SEDSTR" $PROJ_FILE
 }
 
 delproj() {
     ALIAS=$1
     SEDSTR="/\[$ALIAS\]/d"
-    sed -i $SEDSTR $PROJ_FILE
+    sed_f -i $SEDSTR $PROJ_FILE
 }
 
 proj-ls () {
@@ -33,5 +34,5 @@ s/"//g
 s/=/\t/
 }
 EOC
-    sed $SEDSTR $PROJ_FILE | awk '{ printf "%-20s %s\n", $1, $2 }'
+    sed_f $SEDSTR $PROJ_FILE | awk '{ printf "%-20s %s\n", $1, $2 }'
 }

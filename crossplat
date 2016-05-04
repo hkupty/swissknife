@@ -1,0 +1,6 @@
+#!/bin/env bash
+# crossplat - Abstract over multiple platforms
+
+
+[[ `uname` == 'Linux' ]] && alias sed_f="sed" || alias sed_f="gsed"
+
