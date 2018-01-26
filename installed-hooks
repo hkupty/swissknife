@@ -1,0 +1,5 @@
+typeset -ax PRE_SD_HOOKS
+PRE_SD_HOOKS=()
+
+typeset -ax POST_SD_HOOKS
+POST_SD_HOOKS=(neovim)

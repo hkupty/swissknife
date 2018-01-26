@@ -1,11 +1,12 @@
 #!/bin/env bash
 IAMAT=$(dirname $0)
 source $IAMAT/base
+source $IAMAT/installed-hooks
+
 
 sd () {
-
   # Exec pre hooks
-  for HOOK in $SWISSKNIFE_PRE_SD_HOOKS; do
+  for HOOK in $PRE_SD_HOOKS; do
     eval _pre_sd_${HOOK}_hook
   done
 
@@ -36,7 +37,7 @@ sd () {
   # Force directory change
   pushd $PROJ_DIR/$TGT > /dev/null
 
-  for HOOK in $SWISSKNIFE_POST_SD_HOOKS; do
+  for HOOK in $POST_SD_HOOKS; do
     eval _post_sd_${HOOK}_hook
   done
 

@@ -19,6 +19,12 @@ skf-show() {
   awk -F '/' 'NR>1 { print "  "$NF }' $IAMAT/tools
 }
 
-skf-add-hook(){
-  
+skf-add-hook() {
+  source $IAMAT/installed-hooks
+  source $IAMAT/hooks/$1
+
+  echo '' > $IAMAT/installed-hooks
+
+  typeset -p  > $IAMAT/installed-hooks
+
 }
